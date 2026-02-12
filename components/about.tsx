@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { Dumbbell, Users, Target, Zap } from "lucide-react"
+import { useEffect, useRef } from "react";
+import { Dumbbell, Users, Target, Zap } from "lucide-react";
 
 const highlights = [
   {
@@ -24,28 +24,28 @@ const highlights = [
     title: "Ambiente Motivador",
     desc: "Espaco energetico e acolhedor que inspira voce a dar o seu melhor a cada treino.",
   },
-]
+];
 
 export function About() {
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up")
+            entry.target.classList.add("animate-fade-in-up");
           }
-        })
+        });
       },
-      { threshold: 0.1 }
-    )
+      { threshold: 0.1 },
+    );
 
-    const items = sectionRef.current?.querySelectorAll("[data-animate]")
-    items?.forEach((item) => observer.observe(item))
+    const items = sectionRef.current?.querySelectorAll("[data-animate]");
+    items?.forEach((item) => observer.observe(item));
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="sobre" className="bg-primary py-20 lg:py-28" ref={sectionRef}>
@@ -55,7 +55,7 @@ export function About() {
           <div data-animate className="opacity-0">
             <div className="overflow-hidden rounded-2xl shadow-2xl">
               <img
-                src="/images/about-gym.jpg"
+                src="/about-gym.jpg"
                 alt="Interior da Academia ADM com equipamentos modernos"
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
               />
@@ -69,7 +69,7 @@ export function About() {
                 Sobre nos
               </span>
               <h2 className="font-display text-3xl font-bold uppercase tracking-tight text-primary-foreground md:text-5xl">
-                Sua Evolucao Comeca Aqui
+                Sua Evolução Comeca Aqui
               </h2>
               <p className="mt-6 leading-relaxed text-primary-foreground/80">
                 A Academia ADM e a referencia em treinamento fisico no Alto do
@@ -105,5 +105,5 @@ export function About() {
         </div>
       </div>
     </section>
-  )
+  );
 }

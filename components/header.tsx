@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Menu, X } from "lucide-react"
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
@@ -11,31 +11,29 @@ const navLinks = [
   { label: "Depoimentos", href: "#depoimentos" },
   { label: "Localizacao", href: "#localizacao" },
   { label: "Instagram", href: "#social" },
-]
+];
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-primary/95 backdrop-blur-md shadow-lg"
-          : "bg-primary"
+        isScrolled ? "bg-primary/95 backdrop-blur-md shadow-lg" : "bg-primary"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
         {/* Logo */}
         <a href="#inicio" className="flex items-center gap-3">
           <img
-            src="/images/logoacademia.jpg"
+            src="/logoacademia.jpg"
             alt="Logo Academia ADM - Alto do Mourao"
             className="h-12 w-12 rounded-full object-cover"
           />
@@ -104,5 +102,5 @@ export function Header() {
         </nav>
       )}
     </header>
-  )
+  );
 }

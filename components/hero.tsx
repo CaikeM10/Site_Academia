@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { ChevronDown } from "lucide-react"
+import { useEffect, useRef } from "react";
+import { ChevronDown } from "lucide-react";
 
 export function Hero() {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current
-    if (el) el.classList.add("animate-fade-in-up")
-  }, [])
+    const el = ref.current;
+    if (el) el.classList.add("animate-fade-in-up");
+  }, []);
 
   return (
     <section
@@ -19,7 +19,7 @@ export function Hero() {
       {/* Background */}
       <div className="absolute inset-0">
         <img
-          src="/images/hero-gym.jpg"
+          src="/hero-gym.jpg"
           alt=""
           className="h-full w-full object-cover"
         />
@@ -27,14 +27,17 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div ref={ref} className="relative z-10 mx-auto max-w-4xl px-4 py-32 text-center opacity-0">
+      <div
+        ref={ref}
+        className="relative z-10 mx-auto max-w-4xl px-4 py-32 text-center opacity-0"
+      >
         <img
-          src="/images/logoacademia.jpg"
+          src="/logoacademia.jpg"
           alt="Logo Academia ADM"
           className="mx-auto mb-8 h-28 w-28 rounded-full object-cover shadow-2xl lg:h-36 lg:w-36"
         />
         <h1 className="font-display text-5xl font-black uppercase leading-tight tracking-tight text-primary-foreground md:text-7xl lg:text-8xl">
-          <span className="text-balance">{'Forca. Foco. Resultado.'}</span>
+          <span className="text-balance">{"Força. Foco. Resultado."}</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/80 md:text-xl">
           Transforme seu corpo e sua mente na academia que e referencia no Alto
@@ -68,5 +71,5 @@ export function Hero() {
         <ChevronDown size={32} />
       </a>
     </section>
-  )
+  );
 }

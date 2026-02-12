@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState, useCallback } from "react"
-import { ChevronLeft, ChevronRight, ShoppingCart, Star } from "lucide-react"
+import { useEffect, useRef, useState, useCallback } from "react";
+import { ChevronLeft, ChevronRight, ShoppingCart, Star } from "lucide-react";
 
 const products = [
   {
@@ -11,9 +11,10 @@ const products = [
     originalPrice: "R$ 189,90",
     rating: 4.9,
     reviews: 234,
-    image: "/images/whey-protein.jpg",
+    image: "/whey.webp",
     tag: "Mais Vendido",
-    description: "30g de proteina por dose. Ideal para ganho de massa muscular.",
+    description:
+      "30g de proteina por dose. Ideal para ganho de massa muscular.",
   },
   {
     name: "Creatina Monohidratada",
@@ -22,7 +23,7 @@ const products = [
     originalPrice: "R$ 109,90",
     rating: 4.8,
     reviews: 187,
-    image: "/images/creatina.jpg",
+    image: "/creatina.webp",
     tag: "Oferta",
     description: "5g por dose. Aumento de forca e performance nos treinos.",
   },
@@ -33,7 +34,7 @@ const products = [
     originalPrice: "R$ 139,90",
     rating: 4.7,
     reviews: 156,
-    image: "/images/pre-treino.jpg",
+    image: "/pre-treino.webp",
     tag: "Novo",
     description: "Energia explosiva com cafeina, beta-alanina e taurina.",
   },
@@ -44,7 +45,7 @@ const products = [
     originalPrice: "R$ 89,90",
     rating: 4.6,
     reviews: 98,
-    image: "/images/bcaa.jpg",
+    image: "/bcaa.webp",
     tag: null,
     description: "Aminoacidos essenciais para recuperacao e anti-catabolico.",
   },
@@ -55,9 +56,10 @@ const products = [
     originalPrice: "R$ 99,90",
     rating: 4.7,
     reviews: 112,
-    image: "/images/glutamina.jpg",
+    image: "/glutamina.jpg",
     tag: null,
-    description: "Recuperacao muscular e fortalecimento do sistema imunologico.",
+    description:
+      "Recuperacao muscular e fortalecimento do sistema imunologico.",
   },
   {
     name: "Multivitaminico Daily",
@@ -66,62 +68,63 @@ const products = [
     originalPrice: "R$ 64,90",
     rating: 4.5,
     reviews: 76,
-    image: "/images/multivitaminico.jpg",
+    image: "/multivitaminico.webp",
     tag: "Essencial",
     description: "Vitaminas e minerais essenciais para saude e desempenho.",
   },
-]
+];
 
 export function Supplements() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const [canScrollLeft, setCanScrollLeft] = useState(false)
-  const [canScrollRight, setCanScrollRight] = useState(true)
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   const checkScroll = useCallback(() => {
-    const el = scrollRef.current
-    if (!el) return
-    setCanScrollLeft(el.scrollLeft > 10)
-    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10)
-  }, [])
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  }, []);
 
   const scroll = useCallback((direction: "left" | "right") => {
-    const el = scrollRef.current
-    if (!el) return
-    const cardWidth = el.querySelector<HTMLElement>("[data-card]")?.offsetWidth ?? 320
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth =
+      el.querySelector<HTMLElement>("[data-card]")?.offsetWidth ?? 320;
     el.scrollBy({
       left: direction === "left" ? -(cardWidth + 24) : cardWidth + 24,
       behavior: "smooth",
-    })
-  }, [])
+    });
+  }, []);
 
   useEffect(() => {
-    const el = scrollRef.current
-    if (!el) return
-    checkScroll()
-    el.addEventListener("scroll", checkScroll, { passive: true })
-    window.addEventListener("resize", checkScroll)
+    const el = scrollRef.current;
+    if (!el) return;
+    checkScroll();
+    el.addEventListener("scroll", checkScroll, { passive: true });
+    window.addEventListener("resize", checkScroll);
     return () => {
-      el.removeEventListener("scroll", checkScroll)
-      window.removeEventListener("resize", checkScroll)
-    }
-  }, [checkScroll])
+      el.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, [checkScroll]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up")
+            entry.target.classList.add("animate-fade-in-up");
           }
         }
       },
-      { threshold: 0.1 }
-    )
-    const items = sectionRef.current?.querySelectorAll("[data-animate]")
-    items?.forEach((item) => observer.observe(item))
-    return () => observer.disconnect()
-  }, [])
+      { threshold: 0.1 },
+    );
+    const items = sectionRef.current?.querySelectorAll("[data-animate]");
+    items?.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
@@ -259,5 +262,5 @@ export function Supplements() {
         </div>
       </div>
     </section>
-  )
+  );
 }
